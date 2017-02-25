@@ -1,0 +1,18 @@
+#!/usr/bin/awk -f
+BEGIN{
+        occ = 0
+}
+{
+        # printf("length of line %d : %d\n", NR, length($0))
+        # if (substr($0, length($0)-1, length($0)) == "[:space:]") {
+        if (match($0, " $")){
+                printf("Space alert at line %d\n", NR)
+                print $0
+                occ += 1
+        }
+}
+END{
+        if (occ != 0){
+                printf("Found %d spaces at line endings", occ)
+        }
+}

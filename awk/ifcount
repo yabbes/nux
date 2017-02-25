@@ -1,0 +1,8 @@
+#!/usr/bin/awk -f
+# this script counts the occurences of 'if' in a file
+
+/if/    { num_if++; }
+END {
+        print "** result **\n"
+        printf("    %d occurences of if in %d lines", num_if, NR)
+}
