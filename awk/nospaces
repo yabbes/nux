@@ -7,12 +7,15 @@ BEGIN{
         # if (substr($0, length($0)-1, length($0)) == "[:space:]") {
         if (match($0, " $")){
                 printf("Space alert at line %d\n", NR)
-                print $0
+                printf("%d\t %s\n\n",NR, $0)
                 occ += 1
         }
 }
 END{
+        print "** RESULT **"
         if (occ != 0){
                 printf("Found %d spaces at line endings", occ)
-        }
+        } else {
+            print "impeccable code"
+    }
 }

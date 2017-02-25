@@ -2,6 +2,7 @@
 BEGIN { print "File\tOwner" }
 { print $9, "\t", $3}
 END { print " - DONE -" }
-    
- 
+this is a badly coded line    
+
+oh no, not another line ending in a space  
 
