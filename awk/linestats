@@ -1,0 +1,16 @@
+#!/usr/bin/awk -f
+# this script is supposed to display some statistics for the file, like number of lines, mean length of lines...
+
+BEGIN {
+        lines = 0;
+        line_length = 0;
+        total_length = 0;
+}
+{
+        lines++;
+        line_length = length($0);
+        total_length += line_length;
+}
+END {
+        printf("%d lines with a mean length of %d have been parsed", lines, total_length/lines)
+}
