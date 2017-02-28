@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f
+# y en avait un qui disait que c'est complètement débile d'apprendre awk
+
+BEGIN {
+}
+{
+    if (  $0 ~ /awk/  ) { print $0 " <-- c'est débile\n";}
+}
+END {
+}

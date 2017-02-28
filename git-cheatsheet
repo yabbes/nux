@@ -1,0 +1,11 @@
+adding user info
+git config --global user.name "Name"
+git config --global user.email "e@mail.com"
+
+for the remote repo
+mkdir
+git init
+git config --bool core.bare true
+
+for the local repo
+git remote add origin /link/to/remote/repo
