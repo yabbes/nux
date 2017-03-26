@@ -8,5 +8,8 @@ git init
 git init --bare
 git config --bool core.bare true
 
+config for windows systems
+git config --global core.autocrlf true
+
 for the local repo
 git remote add origin /link/to/remote/repo
