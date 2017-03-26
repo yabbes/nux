@@ -5,6 +5,7 @@ git config --global user.email "e@mail.com"
 for the remote repo
 mkdir
 git init
+git init --bare
 git config --bool core.bare true
 
 for the local repo
