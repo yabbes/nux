@@ -7,8 +7,5 @@ find . -maxdepth 1 -name "*.zip" -type f -printf '%T@ %p\n'  | sort -n | tail -1
 formatted timestamp no hours..
 timestamp=$(date -d "today" +"%Y%m%d")
 
-count certain files in directory
-fileCount=$(find $folderDirectory -maxdepth 1 -name "*.zip" -type f -mtime +7 | wc -l)
-
 sqldump
 /usr/local/mysql/bin/mysqldump --opt -u username -ppassword dbname > /home/user/backup$timestamp.sql
