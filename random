@@ -12,3 +12,7 @@ fileCount=$(find $folderDirectory -maxdepth 1 -name "*.zip" -type f -mtime +7 | 
 
 sqldump
 /usr/local/mysql/bin/mysqldump --opt -u username -ppassword dbname > /home/user/backup$timestamp.sql
+
+mount samba share in fstab via cifs
+//server/sharename	/home/user/mounting/point	cifs	uid=1000,gid=1000,username=sambauser,password=password,iocharset=utf8,sec=ntlm	0 0
+check if it mounts correctly "mount -a" before reboot
