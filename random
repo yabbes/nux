@@ -1,6 +1,11 @@
+convert txt file of links to proper html formatted a hrefs
 cat goodies.log | awk '{print "<a href=\"" $0 "\">" $0 "</a><br>"}' > ~/goodies.html
 
 find oldest file and delete it
 find . -maxdepth 1 -name "*.zip" -type f -printf '%T@ %p\n'  | sort -n | tail -1 | awk '{print $2}' | xargs -I '{}' rm '{}'
 
+formatted timestamp no hours..
+timestamp=$(date -d "today" +"%Y%m%d")
 
+sqldump
+/usr/local/mysql/bin/mysqldump --opt -u username -ppassword dbname > /home/user/backup$timestamp.sql
