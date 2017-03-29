@@ -1,23 +1,25 @@
-convert txt file of links to proper html formatted a hrefs
+#!/bin/bash
+
+# convert txt file of links to proper html formatted a hrefs
 cat goodies.log | awk '{print "<a href=\"" $0 "\">" $0 "</a><br>"}' > ~/goodies.html
 
-find oldest file and delete it
+# find oldest file and delete it
 find . -maxdepth 1 -name "*.zip" -type f -printf '%T@ %p\n'  | sort -n | tail -1 | awk '{print $2}' | xargs -I '{}' rm '{}'
 
-formatted timestamp no hours..
+# formatted timestamp no hours..
 timestamp=$(date -d "today" +"%Y%m%d")
 
-count certain files in directory
+# count certain files in directory
 fileCount=$(find $folderDirectory -maxdepth 1 -name "*.zip" -type f -mtime +7 | wc -l)
 
-sqldump
+# sqldump
 /usr/local/mysql/bin/mysqldump --opt -u username -ppassword dbname > /home/user/backup$timestamp.sql
 
-mount samba share in fstab via cifs
+# mount samba share in fstab via cifs
 //server/sharename	/home/user/mounting/point	cifs	uid=1000,gid=1000,username=sambauser,password=password,iocharset=utf8,sec=ntlm	0 0
-check if it mounts correctly "mount -a" before reboot
+# check if it mounts correctly "mount -a" before reboot
 
-check if a certain process is running and execute code
+# check if a certain process is running and execute code
 if pgrep -f "/process/location/script.sh" > /dev/null 
 then
 	echo "process found running"
