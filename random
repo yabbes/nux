@@ -28,3 +28,6 @@ else
 	echo "process not running"
 	exit 1
 fi
+
+# remove line breaks from file via tr
+tr '\n' ' ' < input_filename
