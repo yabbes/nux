@@ -1,16 +1,19 @@
-Windows Shell
+; Windows Shell
 
 Get-Service -Name servicename |Start-servicename
 Get-Service -Name servicename |Stop-servicename
 
-On a remote machine
+; On a remote machine
 
 Get-Service -Name servicename -ComputerName Machine01 |Start-servicename
 Get-Service -Name servicename -ComputerName Machine01 |Stop-servicename
 
-Simpler on a local machine
+; Simpler on a local machine
 
 NET START "service"
 NET STOP "service"
 
-# check for sufficient user rights
+; check for sufficient user rights
+
+; connect to remote windows machine
+net use \\MACHINE password /USER:username
