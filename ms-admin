@@ -17,3 +17,13 @@ NET STOP "service"
 
 ; connect to remote windows machine
 net use \\MACHINE password /USER:username
+
+; using PsExec
+; https://technet.microsoft.com/en-us/sysinternals/bb897553.aspx
+
+; without psexec just plain SC
+
+SC \\REMOTEMACHINE start servicename
+SC \\REMOTEMACHINE stop servicename
+
+; just make sure you've got the required privileges
