@@ -39,3 +39,9 @@ SC \\REMOTEMACHINE start servicename
 SC \\REMOTEMACHINE stop servicename
 
 ; just make sure you've got the required privileges
+
+; establish connection to remote pc with stock tools
+
+net use \\remote\IPC$ /user:local-username-on-remote-machine passowrd
+sc \\remote stop service-name
+net use \\remote\IPC$ /delete
