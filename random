@@ -31,3 +31,6 @@ fi
 
 # remove line breaks from file via tr
 tr '\n' ' ' < input_filename
+
+# use curl to send a dummy POST request
+curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
