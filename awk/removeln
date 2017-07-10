@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f
+# y en avait un qui disait que c'est complètement débile d'apprendre awk
+
+BEGIN {
+}
+{
+    gsub(/\n/,"",$0); print $0;
+}
+END {
+}
