@@ -1,0 +1,26 @@
+
+key_pad1_up = up
+key_pad1_down = down
+key_pad1_left = left
+key_pad1_right = right
+key_pad1_a = a
+key_pad1_b = s
+key_pad1_c = d
+key_pad1_x = q
+key_pad1_y = w
+key_pad1_z = e
+key_pad1_mode = backspace
+key_pad1_start = return
+
+bool_joystick = yes
+
+joypad1_b1 = A
+joypad1_b0 = B
+joypad1_b2 = C
+joypad1_b3 = X
+joypad1_b4 = Y
+joypad1_b5 = Z
+#joypad1_b6 = X
+#joypad1_b7 = X
+joypad1_b9 = START
+joypad1_b9 = MODE
