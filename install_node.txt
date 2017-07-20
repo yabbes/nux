@@ -1,0 +1,25 @@
+install nodejs from 
+https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+---->
+
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+####
+
+configure node to store global modules in ~/.npm-global 
+
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.bash_profile
+source ~/.bash_profile
+
+#####
+install latest npm
+
+cd ~/.npm-global
+curl https://www.npmjs.com/install.sh | sh
+
+####
+install angular/cli (angular 2)
+npm install -g @angular/cli
