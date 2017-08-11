@@ -1,0 +1,26 @@
+"*":
+  "atom-python-run":
+    f5_command: "python3 \"{file}\""
+  "autocomplete-ruby":
+    port: 30407
+  core:
+    telemetryConsent: "no"
+  editor:
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "d8725859-40d7-4baf-9cb5-3667ee3e9cdd"
+  figletify:
+    font: "Small"
+  linter: {}
+  "linter-js-standard":
+    style: "semistandard"
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
