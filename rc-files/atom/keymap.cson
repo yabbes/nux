@@ -1,6 +1,9 @@
 'atom-text-editor.vim-mode-plus.insert-mode':
   'ctrl-c': 'core:copy'
   'j k': 'vim-mode-plus:reset-normal-mode'
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  ': w': 'core:save'
+  ': q': 'core:close'
 'body .native-key-bindings':
   'ctrl-f': 'native!'
 
