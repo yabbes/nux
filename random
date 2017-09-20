@@ -34,3 +34,7 @@ tr '\n' ' ' < input_filename
 
 # use curl to send a dummy POST request
 curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
+
+# replace a certain phrase by nothing with sed (delete it)
+# had to use it for a mysqldump
+sed -i 's/ROW_FORMAT=FIXED//g' neue.sql  
