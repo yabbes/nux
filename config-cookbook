@@ -8,3 +8,16 @@ iface eth0 inet static
       gateway 192.168.1.1 (example)
 
 # sudo /etc/init.d/network restart
+
+
+# Some vsftpd configuration
+# /etc/vsftpd.conf
+
+local_umask=002
+local_enable=YES     
+write_enable=YES
+
+# Typical php modification to increase upload size
+# php.ini
+upload_max_filesize = 150M
+post_max_size = 150M
