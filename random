@@ -38,3 +38,7 @@ curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
 # replace a certain phrase by nothing with sed (delete it)
 # had to use it for a mysqldump
 sed -i 's/ROW_FORMAT=FIXED//g' neue.sql  
+
+# using braces to simplify handling several conditions in SQL
+# This example uses three flexible conditions
+SELECT * FROM `table` WHERE cellA = 1 AND ((cellB = '') OR (cellB <= 20171004)) AND ((cellC='') OR (cellC >= 20171004))
