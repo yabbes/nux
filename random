@@ -42,3 +42,8 @@ sed -i 's/ROW_FORMAT=FIXED//g' neue.sql
 # using braces to simplify handling several conditions in SQL
 # This example uses three flexible conditions
 SELECT * FROM `table` WHERE cellA = 1 AND ((cellB = '') OR (cellB <= 20171004)) AND ((cellC='') OR (cellC >= 20171004))
+
+# show containing folder sizes by using du -h with --max-depht=n
+du -h --max-depth=1   
+# sort by size (only works properly with same unit for all contents)
+du -h --max-depth=1  | sort -nr > du_listing
