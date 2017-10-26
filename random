@@ -20,7 +20,7 @@ fileCount=$(find $folderDirectory -maxdepth 1 -name "*.zip" -type f -mtime +7 | 
 # check if it mounts correctly "mount -a" before reboot
 
 # check if a certain process is running and execute code
-if pgrep -f "/process/location/script.sh" > /dev/null 
+if pgrep -f "/process/location/script.sh" > /dev/null
 then
 	echo "process found running"
 	exit 0
@@ -37,13 +37,16 @@ curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
 
 # replace a certain phrase by nothing with sed (delete it)
 # had to use it for a mysqldump
-sed -i 's/ROW_FORMAT=FIXED//g' neue.sql  
+sed -i 's/ROW_FORMAT=FIXED//g' neue.sql
+
+# delete line containing match in output file
+cat emails.txt | sed '/mymatch/d' > output.txt    
 
 # using braces to simplify handling several conditions in SQL
 # This example uses three flexible conditions
 SELECT * FROM `table` WHERE cellA = 1 AND ((cellB = '') OR (cellB <= 20171004)) AND ((cellC='') OR (cellC >= 20171004))
 
 # show containing folder sizes by using du -h with --max-depht=n
-du -h --max-depth=1   
+du -h --max-depth=1
 # sort by size (only works properly with same unit for all contents)
 du -h --max-depth=1  | sort -nr > du_listing
