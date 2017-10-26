@@ -50,3 +50,8 @@ SELECT * FROM `table` WHERE cellA = 1 AND ((cellB = '') OR (cellB <= 20171004)) 
 du -h --max-depth=1
 # sort by size (only works properly with same unit for all contents)
 du -h --max-depth=1  | sort -nr > du_listing
+
+# using grep to count number of lines with match
+grep -c 'match' file.txt
+# counting number of lines excluding the blank ones in file
+grep -c '[^[:space:]]' file.txt
