@@ -29,6 +29,13 @@ else
 	exit 1
 fi
 
+# simple numerical comparison in bash with conditionary statement
+# how many files of a certain type are in folder x
+COUNT=$(find /home/user/myfolder -type f -name "*.sql" | wc -l)
+if [ $COUNT -gt 5 ]; then
+	echo "there are more than 5 sql files"
+fi
+
 # remove line breaks from file via tr
 tr '\n' ' ' < input_filename
 
@@ -40,7 +47,7 @@ curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
 sed -i 's/ROW_FORMAT=FIXED//g' neue.sql
 
 # delete line containing match in output file
-cat emails.txt | sed '/mymatch/d' > output.txt    
+cat emails.txt | sed '/mymatch/d' > output.txt
 
 # using braces to simplify handling several conditions in SQL
 # This example uses three flexible conditions
