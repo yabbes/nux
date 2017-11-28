@@ -36,6 +36,12 @@ if [ $COUNT -gt 5 ]; then
 	echo "there are more than 5 sql files"
 fi
 
+# compare modified date of two files with -ot or -nt (older than / newer than)
+# if $file1 older than $file 2, replace with newer
+if [ "$file1" -ot "$file2" ]; then
+    cp -f "$file2" "$file1"
+fi
+
 # remove line breaks from file via tr
 tr '\n' ' ' < input_filename
 
