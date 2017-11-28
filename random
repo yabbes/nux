@@ -42,6 +42,9 @@ if [ "$file1" -ot "$file2" ]; then
     cp -f "$file2" "$file1"
 fi
 
+# list newest file of certain type in directory 
+ls -t *.jpa | head -1
+
 # remove line breaks from file via tr
 tr '\n' ' ' < input_filename
 
