@@ -71,3 +71,5 @@ du -h --max-depth=1  | sort -nr > du_listing
 grep -c 'match' file.txt
 # counting number of lines excluding the blank ones in file
 grep -c '[^[:space:]]' file.txt
+# multi match grep using -e
+STDOUT | grep -e "match 1" -e "match 2"
