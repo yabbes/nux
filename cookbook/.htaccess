@@ -1,0 +1,6 @@
+# just some simple .htaccess recipes for the Apache web server
+
+# block all ips but my own :
+order deny,allow
+deny from all
+allow from 87.138.166.194
