@@ -36,8 +36,13 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# keyboard layouts
+exec "setxkbmap -layout 'de,pt,ru'"
+exec "setxkbmap -option 'grp:alt_shift_toggle'"
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -158,17 +163,20 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#        status_command py3status -b -c ~/.config/i3status/config -l /tmp/pystatus.log
+#        tray_output primary
+#        position top
+#        colors {
+#            background #$bgcolor
+#			statusline #$txtcolor
+#			separator #$txtcolor
+#			focused_workspace  #$fgcolor #$fgcolor #$bgcolor
+#            inactive_workspace #$bgcolor #$bgcolor #$txtcolor
+#         }
+#}
 bar {
-        status_command py3status -b -c ~/.config/i3status/config -l /tmp/pystatus.log
-        tray_output primary
-        position top
-        colors {
-            background #$bgcolor
-			statusline #$txtcolor
-			separator #$txtcolor
-			focused_workspace  #$fgcolor #$fgcolor #$bgcolor
-            inactive_workspace #$bgcolor #$bgcolor #$txtcolor
-         }
+    status_command i3blocks
 }
 
 
@@ -180,7 +188,7 @@ client.urgent #$bgcolor #$bgcolor #$urgent
 # font
 font pango:Ubuntu Mono Regular 12
 
-exec always feh --bg-scale /home/yabbes/Bilder/yosemite.jpg
+exec feh --bg-scale /home/yabbes/Bilder/scheen.jpg
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
@@ -190,6 +198,5 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-exec "setxkbmap -layout de,pt,ru"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
 
+bindsym $mod+Escape exec "pm-suspend"
