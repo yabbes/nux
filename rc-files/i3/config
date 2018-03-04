@@ -212,3 +212,8 @@ bindsym XF86AudioStop exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86AudioPlay exec xbacklight -dec 10 # decrease screen brightness
 
 bindsym $mod+Escape exec "pm-suspend"
+exec /usr/bin/i3 -V -d all >~/i3log-$(date +'%F-%k-%M-%S') 2>&1
+
+# scrot keybinding
+bindsym --release Shift+Print exec scrot -s '%Y-%m-%d_$wx$h.png'
+bindsym --release Print exec scrot '%Y-%m-%d_$wx$h.png'
