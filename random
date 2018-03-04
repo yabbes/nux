@@ -73,3 +73,6 @@ grep -c 'match' file.txt
 grep -c '[^[:space:]]' file.txt
 # multi match grep using -e
 STDOUT | grep -e "match 1" -e "match 2"
+
+#find name of key event under xorg
+The xev program will output the expected keycodes.
