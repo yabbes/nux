@@ -1,3 +1,11 @@
+[mediaplayer]
+label=♫
+command=~/.config/i3blocks/mediaplayer
+instance=mpd
+interval=5
+signal=10
+color=#666666
+
 [freedisk]
 command=df -h /dev/sda2 | awk '{print $4}' |tail -1
 label=hdd
@@ -15,8 +23,13 @@ command=date +%T
 
 [weather]
 label=wt
-command=~/.config/i3blocks/weather.sh "Dortmund" | awk '{print $2}' 
+command=~/.config/i3blocks/weather.sh "Dortmund" | awk '{print $NF}' 
 interval=900
 color=#666666
+
+[alien]
+interval=once
+command=echo "👽"
+label=👽
 
 
