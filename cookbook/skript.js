@@ -47,3 +47,7 @@ rd.on('line', function(line) {
 
 
 console.log('found ' + i + "long sentences");
+
+
+/* access data from server side php object in js : */
+var items = JSON.parse('<?php echo addslashes(json_encode($items)); ?>');
