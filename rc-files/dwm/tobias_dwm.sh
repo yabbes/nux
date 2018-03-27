@@ -1,11 +1,23 @@
 feh --bg-scale Bilder/wallpaper\ bien.jpg
-alsactl init
-sudo pkill -9 mpd && mpd
+#alsactl init
 
-while true; do
-	DATUM="$(date)"
+#logdir=$HOME/var/log/
+#mkdir -p "$logdir"
+#exec > "$logdir/xinit" 2>&1
 
+
+xrunning=~/.dwm/isrunning
+touch "$xrunning"
+
+cpu_temperatur() {
+	echo $(head -c 2 /sys/class/thermal/thermal_zone0/temp)C
+}
+
+while [[ -f "$xrunning" ]]; do
+	DATUM="$(date '+%R:%S')"
+	IPADDR="$(ip addr show enp7s0|grep inet |head -1 | awk '{print $2}')"
 	sleep 1
-	xsetroot -name "YABBES @ $DATUM"
+	xsetroot -name "YABBES @ $IPADDR + $DATUM CPU @ $(cpu_temperatur)"
+	
 done &
 
