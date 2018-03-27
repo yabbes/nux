@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+logdir=$HOME/var/log/
+mkdir -p "$logdir"
+exec > "$logdir/xinit" 2>&1
+
+xrunning=$HOME/var/run/x$DISPLAY
+touch "$xrunning"
+trap 'rm "$xrunning"' EXIT
+
+xrandr -s 2560x1600
+xrandr --dpi 96
+
+for s in /etc/X11/xinit/xinitrc.d/*; do
+    [[ -f $s ]] && source "$s"
+done
+
+xrdb -merge "$HOME/etc/X11/Xresources"
+
+#add_mode() {
+#    local out="$1"
+#    shift
+#    local modeline=($(cvt "$@" | sed -n 's/"//g;/Modeline/s/.*Modeline //p'))
+#    xrandr --newmode "${modeline[@]}"
+#    xrandr --addmode "$out" "${modeline[0]}"
+#    xrandr --output "$out" --mode "${modeline[0]}"
+#}
+##add_mode VGA-0 1920 1200 60
+#add_mode VGA-1 1920 1080 60
+##xrandr --output VGA-0 --pos    0x0
+##xrandr --output VGA-1 --pos 1920x0
+#xrandr --output VGA-1 --off
+#
+#xrandr --output VGA-0 --auto
+#xrandr --output VGA-0 --right-of DVI-I-1
+#xrandr --output VGA-0 --mode 1920x1080
+#xrandr --output VGA-0 --pos 2560x520
+#
+#xrandr --output DVI-I-1 --mode 2560x1600
+#xrandr --dpi 101
+
+
+xmodmap "$HOME/etc/X11/Xmodmap"
+xset r rate 200 100
+#xset +fp /usr/share/fonts/local
+#xset fp rehash
+
+VBoxClient --clipboard
+
+autocutsel -selection PRIMARY   -fork
+autocutsel -selection CLIPBOARD -fork
+
+while [[ -f "$xrunning" ]]; do
+	urxvtd -o
+done > "$logdir/urxvtd" 2>&1 &
+
+while [[ -f "$xrunning" ]]; do
+	xsetroot -name "$(date "+%a %b %d %R:%S %Z %Y")"
+	sleep 1
+done > "$logdir/xsetroot" 2>&1 &
+
+while [[ -f "$xrunning" ]]; do
+	dwm
+done > "$logdir/dwm" 2>&1
