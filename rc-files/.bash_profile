@@ -6,3 +6,8 @@
 if [ -d "$HOME/bin" ] ; then
 	PATH="$PATH:$HOME/bin"
 fi
+
+# clipboard helper
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selectio clipboard -o'
+alias pbselect='xclip -selection primary -o'
