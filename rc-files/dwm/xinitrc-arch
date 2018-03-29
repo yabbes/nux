@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+logdir=$HOME/var/log/
+mkdir -p "$logdir"
+exec > "$logdir/xinit" 2>&1
+
+xrunning=$HOME/var/run/x$DISPLAY
+touch "$xrunning"
+trap 'rm "$xrunning"' EXIT
+
+for s in /etc/X11/xinit/xinitrc.d/*; do
+    [[ -f $s ]] && source "$s"
+done
+
+xrdb -merge "$HOME/.Xresources"
+
+#xmodmap "$HOME/etc/X11/Xmodmap"
+#xset r rate 200 100
+#xset +fp /usr/share/fonts/local
+#xset fp rehash
+
+#VBoxClient --clipboard
+#
+#autocutsel -selection PRIMARY   -fork
+#autocutsel -selection CLIPBOARD -fork
+#
+while [[ -f "$xrunning" ]]; do
+	urxvtd -o
+done > "$logdir/urxvtd" 2>&1 &
+
+while [[ -f "$xrunning" ]]; do
+	DATUM="$(date '+%R:%S')"
+	IPADDR="$(ip addr show wlp3s0|grep inet |head -1 | awk '{print $2}')"
+	sleep 1
+	xsetroot -name "YABBES @ $IPADDR + $DATUM CPU @ $(cpu_temperatur)"
+done > "$logdir/xsetroot" 2>&1 &
+
+while [[ -f "$xrunning" ]]; do
+	dwm
+done > "$logdir/dwm" 2>&1
