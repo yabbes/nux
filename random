@@ -76,3 +76,8 @@ STDOUT | grep -e "match 1" -e "match 2"
 
 #find name of key event under xorg
 The xev program will output the expected keycodes.
+
+# installing a binary with setuid
+# example brightlight that modifies files in sysfs
+chown root:root brightlight
+chmod 4751 brightlight
