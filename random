@@ -87,3 +87,10 @@ gzip -c largefile.ova | split -b 150000000 - smallcompressedfiles.gz
 
 # dd remote image with ssh to standardout and write output locally
 ssh root@source dd if=/dev/vg/source.img | dd of=/dev/mapper/vg/target.img 
+
+# view postfix mailqueue
+mailq
+# delete a certain mail address from mailq
+postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /username@example\.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+# and re-try to send the remaining ones
+postqueue -f
