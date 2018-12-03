@@ -45,3 +45,7 @@ SC \\REMOTEMACHINE stop servicename
 net use \\remote\IPC$ /user:local-username-on-remote-machine passowrd
 sc \\remote stop service-name
 net use \\remote\IPC$ /delete
+
+; ------------------------------
+; find out user base DN on a windows ad server
+dsquery user -name <known username>
