@@ -3,6 +3,9 @@
 # convert txt file of links to proper html formatted a hrefs
 cat goodies.log | awk '{print "<a href=\"" $0 "\">" $0 "</a><br>"}' > ~/goodies.html
 
+# sum integers of each line with awk
+cat Dokumente/store1.txt | awk '{summe+=$5} END {print summe "MB"}'
+
 # find oldest file and delete it
 find . -maxdepth 1 -name "*.zip" -type f -printf '%T@ %p\n'  | sort -n | tail -1 | awk '{print $2}' | xargs -I '{}' rm '{}'
 
