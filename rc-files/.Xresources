@@ -1,5 +1,6 @@
-URxvt.perl-ext-common:  keyboard-select, tabbed
-URxvt.perl-lib: ~/.urxvt/
+URxvt.perl-ext-common: default
+URxvt.perl-ext: tabbed
+URxvt.perl-lib: /home/yabbes/.urxvt/
 URxvt.font: xft:Ubuntu Mono:size=11
 !URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.color12: rgb:5c/5c/ff
