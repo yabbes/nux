@@ -3,8 +3,14 @@
 # convert txt file of links to proper html formatted a hrefs
 cat goodies.log | awk '{print "<a href=\"" $0 "\">" $0 "</a><br>"}' > ~/goodies.html
 
+# sum integers of each line with awk
+cat Dokumente/store1.txt | awk '{summe+=$5} END {print summe "MB"}'
+
 # find oldest file and delete it
 find . -maxdepth 1 -name "*.zip" -type f -printf '%T@ %p\n'  | sort -n | tail -1 | awk '{print $2}' | xargs -I '{}' rm '{}'
+
+# find files older than x but not newer than y and delete them
+find /data/attachments/ -type f -newermt '2019-01-24 03:52:00' ! -newermt '2019-01-28 10:37:00' | xargs -I '{}' rm '{}'
 
 # formatted timestamp no hours..
 timestamp=$(date -d "today" +"%Y%m%d")
@@ -81,3 +87,25 @@ The xev program will output the expected keycodes.
 # example brightlight that modifies files in sysfs
 chown root:root brightlight
 chmod 4751 brightlight
+
+# compress one large file into multiple chunks of ~150MB each
+gzip -c largefile.ova | split -b 150000000 - smallcompressedfiles.gz
+
+# dd remote image with ssh to standardout and write output locally
+ssh root@source dd if=/dev/vg/source.img | dd of=/dev/mapper/vg/target.img 
+
+# view postfix mailqueue
+mailq
+# delete a certain mail address from mailq
+postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /username@example\.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+# and re-try to send the remaining ones
+postqueue -f
+
+# using dig to make a dns query using a specified dns server
+dig any farm03.sip.qsc.de. @213.148.129.10
+
+# create a self-signed ssl-cert in 3 steps
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr
+openssl x509 -req -days 730 -in server.csr -signkey server.key -out
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+# search local notes for string
+
+grep -i -r -C 2 "$@" ~/Dokumente/notizen
