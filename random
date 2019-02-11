@@ -57,6 +57,11 @@ tr '\n' ' ' < input_filename
 # use curl to send a dummy POST request
 curl --data "param1=value1&param2=value2" https://example.com/resource.cgi
 
+# use curl to check availability of http ressource and check exit code
+tschw@tbox:~$ curl -s http://www.osfi-bsif.gc.ca/Eng/Docs/indstld.xlsx -o /dev/null
+tschw@tbox:~$ echo $?
+0
+
 # replace a certain phrase by nothing with sed (delete it)
 # had to use it for a mysqldump
 sed -i 's/ROW_FORMAT=FIXED//g' neue.sql
