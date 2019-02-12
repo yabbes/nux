@@ -116,3 +116,8 @@ openssl genrsa -out server.key 2048
 openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 730 -in server.csr -signkey server.key -out
 
+# comparing a hexdump of two files
+root@system:/home/user# xxd /data/mysql/mysql/gtid_slave_pos.ibd > gtid1.hex
+root@system:/home/user# xxd /var/lib/mysql/mysql/gtid_slave_pos.ibd > gtid2.hex
+root@system:/home/user# diff gtid1.hex gtid2.hex
+
