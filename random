@@ -121,3 +121,11 @@ root@system:/home/user# xxd /data/mysql/mysql/gtid_slave_pos.ibd > gtid1.hex
 root@system:/home/user# xxd /var/lib/mysql/mysql/gtid_slave_pos.ibd > gtid2.hex
 root@system:/home/user# diff gtid1.hex gtid2.hex
 
+# log rotation
+# find log rotation config files in /etc/logrotate.d/
+# simulate log rotation by using -d
+logrotate -d /etc/logrotate.d/rsyslog
+
+# make logs rotatet even when criterias are not met
+logrotatet -f /etc/logrotate.d/rsyslog
+
