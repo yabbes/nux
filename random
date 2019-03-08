@@ -129,3 +129,5 @@ logrotate -d /etc/logrotate.d/rsyslog
 # make logs rotatet even when criterias are not met
 logrotatet -f /etc/logrotate.d/rsyslog
 
+# random selection of -n lines from input
+kopano-admin -l |grep store01 | shuf -n 25 > store01-auswahl.txt
