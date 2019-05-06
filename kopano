@@ -1,0 +1,10 @@
+# remove certain entries from kopano user store (in this case the calendar)
+
+>>> import kopano
+>>> k = kopano.Server()
+>>> user = k.user('username')
+>>> dir(user.store)
+
+>>> for item in user.store.calendar.items():
+...     if 'searchstring' in item.subject.lower():
+...             user.store.calendar.delete(item)
