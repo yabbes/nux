@@ -8,3 +8,11 @@
 >>> for item in user.store.calendar.items():
 ...     if 'searchstring' in item.subject.lower():
 ...             user.store.calendar.delete(item)
+
+
+# Bash
+# calculate store sizes and compare results to effective disk use
+kopano-admin -l | tail -n +4 | awk '{print $1}' > users.txt
+while read line; do kopano-admin --details "$line"|grep size | awk '{print $4 $5}'; done < users.txt
+# clean results (in case) and copy to file >> storesizes.txt
+awk '{s+=$1} END {print s}' storesizes.txt
