@@ -1,0 +1,5 @@
+# To assist with common regex patterns
+
+/.+?(?=@)/
+# select line until pattern "@"
+
