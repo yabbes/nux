@@ -150,3 +150,12 @@ ip route get 192.168.1.1
 
 # show known devices from arp table for given interface / handy to check for duplicate ips
 arp -i eth1
+
+# export and import sasldb2 from one box to another
+db_dump /etc/sasldb2 > sasldump.db
+db_load /etc/sasldb2 < sasldump.db
+check with `sasldblistusers2` and AUTH with telnet and
+perl -MMIME::Base64 -e 'print encode_base64("login\0login\0password");'
+
+
+
