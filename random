@@ -130,7 +130,7 @@ root@system:/home/user# diff gtid1.hex gtid2.hex
 logrotate -d /etc/logrotate.d/rsyslog
 
 # make logs rotatet even when criterias are not met
-logrotatet -f /etc/logrotate.d/rsyslog
+logrotate -f /etc/logrotate.d/rsyslog
 
 # random selection of -n lines from input
 kopano-admin -l |grep store01 | shuf -n 25 > store01-auswahl.txt
@@ -147,6 +147,12 @@ route add default gw 10.30.1.1
 
 # get route for destination
 ip route get 192.168.1.1
+
+# set static ip address using dhcpcd.service in /etc/dhcpcd.conf
+interface eth0
+static ip_address=192.168.1.2/24                                                                                        
+static routers=192.168.1.254                                                                                            
+static domain_name_servers=192.168.1.254 8.8.8.8  
 
 # show known devices from arp table for given interface / handy to check for duplicate ips
 arp -i eth1
