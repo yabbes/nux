@@ -18,6 +18,12 @@ timestamp=$(date -d "today" +"%Y%m%d")
 # count certain files in directory
 fileCount=$(find $folderDirectory -maxdepth 1 -name "*.zip" -type f -mtime +7 | wc -l)
 
+# mysql basic set up
+mysql_secure_installation
+mysql> create user 'myuser'@'localhost' identified by 'mypassword';
+mysql> create database mydb;
+mysql> grant all privileges on mydb.* to 'myuser'@'localhost';
+
 # sqldump
 /usr/local/mysql/bin/mysqldump --opt -u username -ppassword dbname > /home/user/backup$timestamp.sql
 
