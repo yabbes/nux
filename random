@@ -169,5 +169,11 @@ db_load /etc/sasldb2 < sasldump.db
 check with `sasldblistusers2` and AUTH with telnet and
 perl -MMIME::Base64 -e 'print encode_base64("login\0login\0password");'
 
+# generate a wild card SSL certificate using certbot and DNS-01 Challenge
+certbot certonly -w ~/www/ -d '*.domain.tld' --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory --manual-public-ip-logging-ok
+cat /etc/letsencrypt/live/domain.tld/cert.pem /etc/letsencrypt/live/domain.tld/privkey.pem > /etc/letsencrypt/live/domain.tld/web.pem
+apply pem etc to server config
+systemctl reload lighttpd
+
 
 
